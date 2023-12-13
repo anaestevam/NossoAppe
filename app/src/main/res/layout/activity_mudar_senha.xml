@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.MudarSenhaActivity">
+
+    <ScrollView
+        android:id="@+id/nossoappe"
+        android:layout_width="414dp"
+        android:layout_height="90dp"
+        android:background="@color/orange"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="-3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tituloapp"
+        android:layout_width="412dp"
+        android:layout_height="86dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etNovaSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="110dp"
+        android:hint="Nova Senha" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etNovaSenha"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/purple_200"
+        android:text="Salvar" />
+
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etNovaSenha"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/purple_200"
+        android:text="Voltar" />
+
+</RelativeLayout>

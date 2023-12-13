@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/nomeGastoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Gasto" />
+
+    <TextView
+        android:id="@+id/valorGastoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor do Gasto" />
+
+    <TextView
+        android:id="@+id/pagouGastoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pago/Não Pago" />
+    <TextView
+        android:id="@+id/quemPagouTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pago por:"/>
+
+    <RelativeLayout
+        android:layout_width="52dp"
+        android:layout_height="57dp"
+        android:padding="2dp">
+
+        <ImageButton
+            android:id="@+id/btnApagarGasto"
+            android:layout_width="44dp"
+            android:layout_height="51dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="3dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="Apagar Gasto"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_menu_delete"
+            android:tint="#FF0000" />
+    </RelativeLayout>
+
+</LinearLayout>

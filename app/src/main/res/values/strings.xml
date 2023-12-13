@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name"> NOSSO APPÊ </string>
+    <!-- Main -->
+    <string name="bemvindo">Seja Bem Vindo(a)</string>
+    <string name="entrar_login">Entrar com Login</string>
+    <string name="cadastro">Cadastre-se</string>
+    <!-- Login -->
+    <string name="login"> Login: </string>
+    <string name="senha"> Senha: </string>
+    <string name="entrar"> Entrar </string>
+    <string name="esqueci_senha"> Esqueci a senha / Redefinir </string>
+    <!-- Menu -->
+    <string name="oqdeseja"> O que deseja fazer? </string>
+    <string name="cadastrarm"> Cadastrar Morador </string>
+    <string name="cadastrarg"> Cadastrar Gasto </string>
+    <string name="editarg"> Editar Gasto </string>
+    <string name="editarm"> Editar Morador </string>
+    <string name="listarm"> Listar Moradores </string>
+    <string name="listarg"> Listar Gastos </string>
+    <string name="calcular"> Calcular Despesas </string>
+    <!-- Cadastro Morador -->
+    <string name="cadastromorador">Cadastro do Morador</string>
+    <string name="nomem"> Nome do Morador: </string>
+    <string name="porcentagem"> Porcentagem de Contribuição nos gastos: </string>
+    <!-- Cadastro Gasto -->
+    <string name="cadastrogasto"> Cadastro de Gasto </string>
+    <string name="descricaogasto"> Descrição do Gasto:  </string>
+    <string name="valor"> Valor: </string>
+    <string name="pago"> Pago: </string>
+    <string name="contribuinte"> Quem pagou: </string>
+    <!-- GERAL -->
+    <string name="salvar"> Salvar </string>
+    <string name="limpar"> Limpar </string>
+</resources>
