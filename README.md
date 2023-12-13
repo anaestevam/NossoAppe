@@ -75,7 +75,7 @@ A classe Produto representa o produto e que possui os métodos get e set, e a cl
 
 Para instalar e executar este projeto, siga as seguintes etapas:
 
-1. Clone o repositório para o seu computador usando o comando `git clone https://github.com/anaestevam/AppIMDMarket.git`.
+1. Clone o repositório para o seu computador usando o comando `git clone https://github.com/anaestevam/NossoAppe.git`.
 2. Abra o projeto no seu ambiente de desenvolvimento, no caso o Android Studio.
 3. Execute o aplicativo no seu dispositivo ou emulador.
 
