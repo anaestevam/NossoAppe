@@ -65,15 +65,15 @@ O diretório model contém as classes que representam os objetos de negócio, ta
     atualizarPagamentoGasto(Gasto gasto): Este método é usado para atualizar o status de pagamento de um Gasto existente no banco de dados.
 
     calcularTotalGastosNaoPagos(): Este método calcula o total de gastos não pagos somando os valores da coluna valor na tabela gasto onde a coluna pago é igual a 0.
-    
+
     obterStringPendencias(): Este método obtém uma string formatada contendo os nomes dos moradores e o total de pendências (gastos não pagos) associados a cada morador.
 
 
 ### Diretório `database`
 
-O diretório database contém as classes responsáveis para o BancoDAO realizar operações ou consultas nas tabelas.
+O diretório database contém as classes responsáveis para o `BancoDAO` realizar operações ou consultas nas tabelas.
 
-A classe Produto representa o produto e que possui os métodos get e set, e a classe.
+A classe `Morador` e `Gasto` representa o produto e que possui os métodos get e set, e a classe.
 
  O arquivo é lido ao iniciar o aplicativo para carregar os dados já salvos e é salvo ao fechar o aplicativo após qualquer manipulação de dados.
 
