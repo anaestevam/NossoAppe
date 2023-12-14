@@ -164,7 +164,7 @@ public class BancoDAO extends SQLiteOpenHelper {
 
     /* FIM TUDO SOBRE O MORADOR */
 
-    // Modifique a função salvarGasto na sua classe BancoDAO
+    /* INICIO TUDO SOBRE O GASTO */
     public void salvarGasto(Gasto gasto) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -177,6 +177,7 @@ public class BancoDAO extends SQLiteOpenHelper {
         db.insert(GastoTable.GastoEntry.TABLE_NAME, null, values);
         db.close();
     }
+
     public void atualizarGasto(Gasto gasto) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -295,6 +296,99 @@ public class BancoDAO extends SQLiteOpenHelper {
 
         db.update("gasto", values, "nome = ?", new String[]{gasto.getNome()});
         db.close();
+    }
+    /* INICIO TUDO SOBRE O GASTO */
+
+    /* para os cálculos */
+    public String obterStringGastosMorador() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        String query = "SELECT m." + MoradorTable.MoradorEntry.COLUMN_NOME +
+                ", SUM(g." + GastoTable.GastoEntry.COLUMN_VALOR + ") AS total_gastos" +
+                " FROM " + GastoTable.GastoEntry.TABLE_NAME + " g" +
+                " INNER JOIN " + MoradorTable.MoradorEntry.TABLE_NAME + " m" +
+                " ON g." + GastoTable.GastoEntry.COLUMN_ID_MORADOR_PAGOU + " = m." + MoradorTable.MoradorEntry._ID +
+                " GROUP BY m." + MoradorTable.MoradorEntry.COLUMN_NOME;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String nomeMorador = cursor.getString(cursor.getColumnIndexOrThrow(MoradorTable.MoradorEntry.COLUMN_NOME));
+                double totalGastos = cursor.getDouble(cursor.getColumnIndexOrThrow("total_gastos"));
+
+                stringBuilder.append(nomeMorador)
+                        .append(": R$ ")
+                        .append(totalGastos)
+                        .append("; ")
+                        .append("\n");  // Adicionar uma quebra de linha
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        db.close();
+
+        return stringBuilder.toString();
+    }
+    public double calcularTotalGastosNaoPagos() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        double total = 0;
+
+        String[] colunas = {GastoTable.GastoEntry.COLUMN_VALOR};
+        String condicao = GastoTable.GastoEntry.COLUMN_PAGO + " = 0"; // Gastos não pagos
+
+        Cursor cursor = db.query(GastoTable.GastoEntry.TABLE_NAME, colunas, condicao, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                total += cursor.getDouble(cursor.getColumnIndexOrThrow(GastoTable.GastoEntry.COLUMN_VALOR));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return total;
+    }
+
+    public String obterStringPendencias() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        String query = "SELECT m." + MoradorTable.MoradorEntry.COLUMN_NOME +
+                ", SUM(g." + GastoTable.GastoEntry.COLUMN_VALOR + ") AS total_pendencias" +
+                " FROM " + GastoTable.GastoEntry.TABLE_NAME + " g" +
+                " INNER JOIN " + MoradorTable.MoradorEntry.TABLE_NAME + " m" +
+                " ON g." + GastoTable.GastoEntry.COLUMN_ID_MORADOR_PAGOU + " = m." + MoradorTable.MoradorEntry._ID +
+                " WHERE g." + GastoTable.GastoEntry.COLUMN_PAGO + " = 0" +
+                " GROUP BY m." + MoradorTable.MoradorEntry.COLUMN_NOME;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String nomeMorador = cursor.getString(cursor.getColumnIndexOrThrow(MoradorTable.MoradorEntry.COLUMN_NOME));
+                double totalPendencias = cursor.getDouble(cursor.getColumnIndexOrThrow("total_pendencias"));
+
+                stringBuilder.append(nomeMorador)
+                        .append(": R$ ")
+                        .append(totalPendencias)
+                        .append("; ")
+                        .append("\n");
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        db.close();
+
+        return stringBuilder.toString();
     }
 
 }

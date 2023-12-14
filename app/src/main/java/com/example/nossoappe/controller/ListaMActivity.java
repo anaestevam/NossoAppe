@@ -31,17 +31,14 @@ public class ListaMActivity extends AppCompatActivity{
 
         banco = new BancoDAO(this);
         listViewMoradores = findViewById(R.id.listav);
-        voltarmenu = findViewById(R.id.voltarmenu);
+        voltarmenu = findViewById(R.id.voltarmenu5);
 
         voltarmenu.setOnClickListener(v -> voltarMenu());
 
-        // Carregar a lista de moradores do banco de dados
         List<Morador> moradores = banco.getListaMoradores();
 
-        // Criar e configurar o adaptador
         MoradorAdapter moradorAdapter = new MoradorAdapter(this, moradores);
 
-        // Associar o adaptador à ListView
         listViewMoradores.setAdapter(moradorAdapter);
     }
     public void deletarMorador(Morador morador) {

@@ -44,7 +44,6 @@ public class MoradorAdapter extends ArrayAdapter<Morador> {
         TextView porcentagemMoradorTextView = listItemView.findViewById(R.id.porcentagemMoradorTextView);
         porcentagemMoradorTextView.setText("Porcentagem: " + moradorAtual.getPorcentagem() + "%");
 
-        // Botão "Apagar Morador"
         ImageButton btnApagarMorador = listItemView.findViewById(R.id.btnApagarMorador);
         btnApagarMorador.setOnClickListener(v -> {
             // Chama o método deletarMorador diretamente na atividade

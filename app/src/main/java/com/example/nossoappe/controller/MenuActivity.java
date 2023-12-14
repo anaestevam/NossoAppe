@@ -13,7 +13,7 @@ public class MenuActivity extends AppCompatActivity {
     private Button btnCadastrarM, btnEditarM, btnEditarG;
     private Button btnListarM;
     private Button btnListarG;
-    private Button btnCadastrarG;
+    private Button btnCadastrarG, calcular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         btnListarG = findViewById(R.id.btnListarG);
         btnCadastrarG = findViewById(R.id.btnCadastrarG);
         btnEditarG = findViewById(R.id.btnEditarG);
+        calcular = findViewById(R.id.Calcular);
 
         btnCadastrarM.setOnClickListener(v -> abreCadastroM());
         btnEditarM.setOnClickListener(v -> abreEditarM());
@@ -33,6 +34,13 @@ public class MenuActivity extends AppCompatActivity {
         btnCadastrarG.setOnClickListener(v -> abreCadastroG());
         btnEditarG.setOnClickListener(v -> abreEditarG());
         btnListarG.setOnClickListener(v -> abreListaG());
+        calcular.setOnClickListener(v -> abreCalculo());
+    }
+
+    private void abreCalculo() {
+        finish();
+        Intent i = new Intent(this, CalculoActivity.class);
+        startActivity(i);
     }
     private void abreCadastroM() {
         finish();
@@ -52,7 +60,6 @@ public class MenuActivity extends AppCompatActivity {
     }
     private void abreListaG(){
         finish();
-       // Intent i = new Intent(this, ListaGActivity.class);
         Intent i = new Intent(this, ListadeGastos.class);
         startActivity(i);
     }

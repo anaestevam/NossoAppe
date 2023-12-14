@@ -99,11 +99,11 @@ public class GastoAdapter extends RecyclerView.Adapter<GastoAdapter.MyViewHolder
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // Atualize a coluna "pago" no banco de dados
+                    // Atualiza a coluna "pago" no banco de dados
                     gasto.setPago(true);
                     bancoDAO.atualizarPagamentoGasto(gasto); // Substitua pelo método correto
                     bancoDAO.close();
-                    // Atualize a interface do usuário
+                    // Atualize a interface
                     notifyItemChanged(position);
                 }
             });

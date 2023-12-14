@@ -1,9 +1,7 @@
 package com.example.nossoappe.controller;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -32,7 +30,7 @@ public class CadastroMActivity extends AppCompatActivity {
         btnLimpar = findViewById(R.id.btnlimpar);
         nossoappe = findViewById(R.id.tituloapp);
 
-        banco = new BancoDAO(this); // Inicializa o objeto BancoDAO
+        banco = new BancoDAO(this);
 
         btnLimpar.setOnClickListener(v -> limparCampos());
         btnSalvar.setOnClickListener(v -> salvarMorador());

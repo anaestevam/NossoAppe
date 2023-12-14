@@ -29,6 +29,7 @@
         <activity android:name=".controller.EditarMoradorActivity" />
         <activity android:name=".controller.EditarGastoActivity" />
         <activity android:name=".controller.ListadeGastos" />
+        <activity android:name=".controller.CalculoActivity" />
 
     </application>
 

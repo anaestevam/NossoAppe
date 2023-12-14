@@ -18,19 +18,21 @@ Uma breve descrição das classes encontradas na pasta:
 
 1. `CadastroGActivity.java` e `CadastroMActivity.java`: Essas classes lidam com as atividades de registro para `Gasto` e `Morador`, respectivamente. Elas contém lógicas para validar entradas de usuário e salvar novos `Gasto` e `Morador` no banco de dados.
 
-2. `EditarGastoActivity.java` e `EditarMoradorActivity.java`: Essas classes lidam com as atividades de edição para `Gasto` e `Morador`.
+2. `CalculoActivity.java`: Essa classes referencia o calculo total de todas os gastos não pagos, além de informar as pendências de acordo com cada Morador. 
 
-3. `ListaMActivity.java`: Essa classes lida com as atividades de listagem da tabela `Morador`.
+3. `EditarGastoActivity.java` e `EditarMoradorActivity.java`: Essas classes lidam com as atividades de edição para `Gasto` e `Morador`.
 
-4. `ListadeGastos.java`: Esta classe lida com a atividade de exibir uma lista de `Gasto`.
+4. `ListaMActivity.java`: Essa classes lida com as atividades de listagem da tabela `Morador`.
 
-5. `LoginActivity.java`: Esta classe lida com a atividade de login do usuário.
+5. `ListadeGastos.java`: Esta classe lida com a atividade de exibir uma lista de `Gasto`.
 
-6. `MainActivity.java`: Esta é a classe de entrada do aplicativo. Ela é a primeira atividade a ser lançada quando o aplicativo é iniciado.
+6. `LoginActivity.java`: Esta classe lida com a atividade de login do usuário.
 
-7. `MenuActivity.java`: Esta classe lida com a atividade do menu principal do aplicativo.
+7. `MainActivity.java`: Esta é a classe de entrada do aplicativo. Ela é a primeira atividade a ser lançada quando o aplicativo é iniciado.
 
-8. `MudarSenhaActivity.java`: Esta classe lida com a atividade de mudança de senha do usuário. 
+8. `MenuActivity.java`: Esta classe lida com a atividade do menu principal do aplicativo.
+
+9. `MudarSenhaActivity.java`: Esta classe lida com a atividade de mudança de senha do usuário. 
 
 Cada uma dessas classes é uma `Activity`, que é uma componente fundamental de qualquer aplicativo Android. Uma `Activity` representa uma única coisa que o usuário pode fazer, é basicamente uma janela na interface do usuário.
 
@@ -61,6 +63,10 @@ O diretório model contém as classes que representam os objetos de negócio, ta
     getListaGastos(): Este método recupera todos os gastos do banco de dados e retorna uma lista de objetos Gasto.
 
     atualizarPagamentoGasto(Gasto gasto): Este método é usado para atualizar o status de pagamento de um Gasto existente no banco de dados.
+
+    calcularTotalGastosNaoPagos(): Este método calcula o total de gastos não pagos somando os valores da coluna valor na tabela gasto onde a coluna pago é igual a 0.
+    
+    obterStringPendencias(): Este método obtém uma string formatada contendo os nomes dos moradores e o total de pendências (gastos não pagos) associados a cada morador.
 
 
 ### Diretório `database`

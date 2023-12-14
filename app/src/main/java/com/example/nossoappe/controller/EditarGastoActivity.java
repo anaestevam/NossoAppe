@@ -25,9 +25,8 @@ public class EditarGastoActivity extends AppCompatActivity {
     private EditText nome;
     private EditText valor;
     private Spinner spinnerContribuintes;
-
     private TextView voltarmenu;
-    private Button btnSalvar, btnDeletar;
+    private Button btnSalvar, btnDeletar, btnLimpar;
     private BancoDAO banco;
 
 
@@ -43,11 +42,11 @@ public class EditarGastoActivity extends AppCompatActivity {
         btnDeletar = findViewById(R.id.deletargasto);
         voltarmenu = findViewById(R.id.tituloapp);
         spinnerContribuintes = findViewById(R.id.spinnerContribuintes);
+        btnLimpar = findViewById(R.id.btnlimpar);
 
-        // Configura o clique do botão de exclusão
         btnDeletar.setOnClickListener(v -> deletarGasto());
-        voltarmenu.setOnClickListener(v -> VoltarMenu());
-
+        voltarmenu.setOnClickListener(v -> voltarMenu());
+        btnLimpar.setOnClickListener(v -> limparCampos());
         carregarMoradoresNoSpinner();
 
         banco = new BancoDAO(this);
@@ -86,7 +85,7 @@ public class EditarGastoActivity extends AppCompatActivity {
             return;
         } else {
             Gasto GastoAtualizado = new Gasto();
-            GastoAtualizado.setNome(novoNomeGasto); // Não deve ser necessário alterar o nome
+            GastoAtualizado.setNome(novoNomeGasto);
             GastoAtualizado.setValor(Double.parseDouble(valorGasto));
 
             banco.atualizarGasto(GastoAtualizado);
@@ -94,10 +93,13 @@ public class EditarGastoActivity extends AppCompatActivity {
             Toast.makeText(this, "Gasto Alterado com sucesso!", Toast.LENGTH_SHORT).show();
             banco.close();
 
-            VoltarMenu();
+            voltarMenu();
         }
     }
-
+    private void limparCampos() {
+        nome.setText("");
+        valor.setText("");
+    }
     private void deletarGasto() {
 
         String nomeGasto = nome.getText().toString();
@@ -114,14 +116,14 @@ public class EditarGastoActivity extends AppCompatActivity {
                         Toast.makeText(this, "Gasto deletado com sucesso!", Toast.LENGTH_SHORT).show();
                     }
                     banco.close();
-                    VoltarMenu();
+                    voltarMenu();
                 })
                 .setNegativeButton("Não", (dialog, which) -> dialog.dismiss())
                 .show();
     }
 
-
-    private void VoltarMenu() {
+    private void voltarMenu() {
+        finish();
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
         finish();

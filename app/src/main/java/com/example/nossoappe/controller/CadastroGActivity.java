@@ -22,7 +22,7 @@ public class CadastroGActivity extends AppCompatActivity {
     private EditText nomeEditText;
     private EditText porcentagemEditText;
     private Spinner spinnerContribuintes;
-    private Button btnSalvar;
+    private Button btnSalvar, btnLimpar;
     private TextView nossoappe;
 
     @Override
@@ -35,6 +35,7 @@ public class CadastroGActivity extends AppCompatActivity {
         spinnerContribuintes = findViewById(R.id.spinnerContribuintes);
         btnSalvar = findViewById(R.id.btnsalvar);
         nossoappe = findViewById(R.id.tituloapp);
+        btnLimpar = findViewById(R.id.btnlimpar);
 
         // Carregue a lista de moradores no Spinner
         carregarMoradoresNoSpinner();
@@ -46,22 +47,25 @@ public class CadastroGActivity extends AppCompatActivity {
             }
         });
         nossoappe.setOnClickListener(v -> voltarMenu());
+        btnLimpar.setOnClickListener(v -> limparCampos());
     }
-
+    private void limparCampos() {
+        nomeEditText.setText("");
+        porcentagemEditText.setText("");
+    }
     private void carregarMoradoresNoSpinner() {
-        BancoDAO bancoDAO = new BancoDAO(this); // Substitua 'context' pelo contexto da sua aplicação
+        BancoDAO bancoDAO = new BancoDAO(this);
         List<Morador> moradores = bancoDAO.getListaMoradores();
 
-        // Crie um ArrayAdapter para os nomes dos moradores
+        // Criando um ArrayAdapter para os nomes dos moradores
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Adicione os nomes dos moradores ao ArrayAdapter
+        // adicionando no adapter
         for (Morador morador : moradores) {
             adapter.add(morador.getNome());
         }
 
-        // Defina o adapter no Spinner
         spinnerContribuintes.setAdapter(adapter);
     }
     private void salvarGasto() {
@@ -71,15 +75,13 @@ public class CadastroGActivity extends AppCompatActivity {
         // Obtém o nome do morador selecionado no Spinner
         String contribuinteNome = spinnerContribuintes.getSelectedItem().toString();
 
-        // Aqui você deve obter o ID do morador a partir do nome do contribuinte
         BancoDAO bancoDAO = new BancoDAO(this);
         long idMorador = bancoDAO.getIdMoradorPorNome(contribuinteNome);
 
-        // Obtém o estado do checkbox pago
+        // PEga se foi pago ou não
         CheckBox checkBoxPago = findViewById(R.id.checkBoxPago);
         boolean pago = checkBoxPago.isChecked();
 
-        // Crie um objeto Gasto com os dados
         Gasto gasto = new Gasto();
         gasto.setNome(nome);
         gasto.setValor(valor);
@@ -92,7 +94,6 @@ public class CadastroGActivity extends AppCompatActivity {
         Toast.makeText(this, "Gasto salvo com sucesso!", Toast.LENGTH_SHORT).show();
         voltarMenu();
     }
-
 
     private void voltarMenu() {
         finish();

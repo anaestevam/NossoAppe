@@ -37,7 +37,7 @@ public class EditarMoradorActivity extends AppCompatActivity {
         voltarmenu = findViewById(R.id.tituloapp);
 
         btnDeletar.setOnClickListener(v -> deletarMorador());
-        voltarmenu.setOnClickListener(v -> VoltarMenu());
+        voltarmenu.setOnClickListener(v -> voltarMenu());
 
         banco = new BancoDAO(this);
 
@@ -80,7 +80,7 @@ public class EditarMoradorActivity extends AppCompatActivity {
             Toast.makeText(this, "Morador Alterado com sucesso!", Toast.LENGTH_SHORT).show();
             banco.close();
 
-            VoltarMenu();
+            voltarMenu();
         }
     }
     private void deletarMorador() {
@@ -100,14 +100,13 @@ public class EditarMoradorActivity extends AppCompatActivity {
                         Toast.makeText(this, "Morador deletado com sucesso!", Toast.LENGTH_SHORT).show();
                     }
                     banco.close();
-                    VoltarMenu();
+                    voltarMenu();
                 })
                 .setNegativeButton("Não", (dialog, which) -> dialog.dismiss())
                 .show();
     }
 
-
-    private void VoltarMenu() {
+    private void voltarMenu() {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
         finish();

@@ -31,4 +31,8 @@
     <!-- GERAL -->
     <string name="salvar"> Salvar </string>
     <string name="limpar"> Limpar </string>
+    <!--CALCULO-->
+    <string name="gastosTotais"> Gastos Totais Não Pagos: </string>
+    <string name="gastosporp"> Gastos por Morador: </string>
+    <string name="pendencias"> Pendências por Morador: </string>
 </resources>
